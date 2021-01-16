@@ -1,0 +1,93 @@
+$(document).ready(function (){
+
+		setTimeout(function(){
+			$('#popup').fadeIn();
+		}, 6000)
+		
+});
+
+
+$('.close').click(function (e){
+
+	e.preventDefault();
+	$('#popup').fadeOut();
+
+});
+
+$('#popup').click(function (){
+
+	$('#popup').fadeOut();
+
+});
+
+$('.pop').click(function (e){
+
+	e.stopPropagation();
+
+});
+
+
+
+
+
+/*----------------------PROGRESS BAR-----------------------------*/
+
+
+$('.progress span').each(function(){
+
+	$(this).animate({
+
+	'width' : $(this).attr('data-progress') + '%'
+
+    }, 2000 , function(){
+
+    	$(this).text($(this).attr('data-progress') + '%');
+
+    });
+
+});
+
+
+/*----------------------link menu-----------------------------*/
+
+
+
+$(window).scroll(function(){
+
+	$('.block').each(function(){
+
+		if($(window).scrollTop() > $(this).offset().top){
+
+			var sectionid = $(this).attr('id');
+
+			$('.navbar-nav a').removeClass('active');
+			$('.navbar-nav li a[data-scroll="'+sectionid+'"]').addClass('active');
+		}
+
+	});
+
+});
+
+
+
+/*----------------------SCROLL TO ELEMENTS-----------------------------*/
+
+
+$('.navbar-nav li a').click(function(e){
+
+	e.preventDefault();
+
+	$('html, body').animate({
+
+		scrollTop : $('#' + $(this).data('scroll')).offset().top + 1
+
+	}, 1000);
+
+});
+
+
+
+
+
+
+
